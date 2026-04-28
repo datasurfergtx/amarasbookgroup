@@ -116,7 +116,7 @@ export default function AlphabetLetter({
               </p>
             </div>
 
-            <div className="mt-auto flex gap-2 pt-1">
+            <div className="mt-auto flex gap-2 pt-1 lg:flex-col">
               <button
                 type="button"
                 onClick={startTrace}
