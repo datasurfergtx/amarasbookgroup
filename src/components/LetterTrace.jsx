@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CANVAS_SIZE = 240;
 const STROKE_WIDTH = 10;
@@ -8,8 +8,14 @@ export default function LetterTrace({ letter, onDone }) {
   const canvasRef = useRef(null);
   const drawingRef = useRef(false);
   const lastPointRef = useRef(null);
+  const [letterCase, setLetterCase] = useState("upper");
 
-  // Set up the canvas backing store at device pixel ratio for crisp strokes.
+  const glyph = letterCase === "upper" ? letter.capital : letter.lowercase;
+  const caseWord = letterCase === "upper" ? "capital" : "lowercase";
+  // Digraph letters like Ու / ու are 2 Unicode chars; shrink the template
+  // so both forms fit inside the 240px canvas without clipping.
+  const fontSize = glyph.length > 1 ? CANVAS_SIZE * 0.46 : CANVAS_SIZE * 0.78;
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -73,22 +79,83 @@ export default function LetterTrace({ letter, onDone }) {
     ctx.restore();
   }
 
+  function switchCase(next) {
+    if (next === letterCase) return;
+    clearCanvas();
+    setLetterCase(next);
+  }
+
+  function caseTabClass(active) {
+    return [
+      "flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold transition-colors",
+      active
+        ? "bg-armenian-apricot text-armenian-ink shadow-soft"
+        : "text-armenian-ink/50 hover:text-armenian-ink/80",
+    ].join(" ");
+  }
+
   return (
     <div className="flex flex-col items-center gap-3">
       <p className="text-xs font-bold uppercase tracking-wide text-armenian-ink/50">
         Trace it
       </p>
+
+      <div
+        role="tablist"
+        aria-label="Letter case"
+        className="inline-flex items-center gap-1 rounded-full bg-armenian-ink/5 p-1"
+      >
+        <button
+          type="button"
+          role="tab"
+          aria-selected={letterCase === "upper"}
+          onClick={() => switchCase("upper")}
+          className={caseTabClass(letterCase === "upper")}
+        >
+          <span
+            className={[
+              "font-display leading-none",
+              letterCase === "upper"
+                ? "text-2xl font-black text-armenian-red"
+                : "text-lg font-bold",
+            ].join(" ")}
+          >
+            {letter.capital}
+          </span>
+          <span className="uppercase tracking-wide">Capital</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={letterCase === "lower"}
+          onClick={() => switchCase("lower")}
+          className={caseTabClass(letterCase === "lower")}
+        >
+          <span
+            className={[
+              "font-display leading-none",
+              letterCase === "lower"
+                ? "text-2xl font-black text-armenian-blue"
+                : "text-lg font-bold",
+            ].join(" ")}
+          >
+            {letter.lowercase}
+          </span>
+          <span className="uppercase tracking-wide">Lowercase</span>
+        </button>
+      </div>
+
       <div
         className="relative rounded-2xl bg-armenian-cream"
         style={{ width: CANVAS_SIZE, height: CANVAS_SIZE }}
       >
-        {/* Faded letter template */}
+        {/* Faded letter template (follows active case) */}
         <div
           className="pointer-events-none absolute inset-0 flex items-center justify-center font-display font-black text-armenian-ink/15"
-          style={{ fontSize: CANVAS_SIZE * 0.78, lineHeight: 1 }}
+          style={{ fontSize, lineHeight: 1 }}
           aria-hidden="true"
         >
-          {letter.capital}
+          {glyph}
         </div>
 
         {/* Drawing layer */}
@@ -105,7 +172,7 @@ export default function LetterTrace({ letter, onDone }) {
             touchAction: "none",
           }}
           className="absolute inset-0 cursor-crosshair rounded-2xl"
-          aria-label={`Trace the letter ${letter.name}`}
+          aria-label={`Trace the ${caseWord} form of ${letter.name}`}
         />
       </div>
 
