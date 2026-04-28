@@ -10,7 +10,7 @@ export default function Contact() {
         <div>
           <span className="pill">Contact</span>
           <h1 className="mt-3 font-display text-5xl font-black text-armenian-ink">
-            Say barev.
+            Say parev.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-armenian-ink/80">
             We're a team of one with a great big dream: keeping{" "}

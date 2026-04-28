@@ -14,7 +14,7 @@ export default function Pronunciation() {
               <span className="text-armenian-red">letter by letter.</span>
             </h1>
             <p className="mt-4 max-w-xl text-lg text-armenian-ink/80">
-              The Eastern Armenian alphabet has{" "}
+              The Western Armenian alphabet has{" "}
               <strong>39 letters</strong>. Tap any letter below to see its name,
               its sound, and a friendly example word from everyday life. Audio
               recordings are on the way — we'll add them as the book series
@@ -41,8 +41,8 @@ export default function Pronunciation() {
         </div>
 
         <p className="mt-10 text-center text-sm text-armenian-ink/60">
-          Romanizations follow common Eastern Armenian conventions; an
-          apostrophe (') marks an aspirated sound.
+          Romanizations follow common Western Armenian conventions, the
+          dialect spoken across the diaspora.
         </p>
       </section>
     </>

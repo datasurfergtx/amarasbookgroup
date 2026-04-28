@@ -17,7 +17,7 @@ export const books = [
     description:
       "My Hye Book is a warm, colorful introduction to the Armenian alphabet and the everyday words that fill a child's world. Each page pairs a letter with bright illustrations and bilingual labels, so little readers can recognize, hear, and say their first Armenian words with confidence.",
     highlights: [
-      "All 39 letters of the Eastern Armenian alphabet",
+      "All 39 letters of the Western Armenian alphabet",
       "Bilingual labels in Armenian and English",
       "Bright, kid-friendly illustrations",
       "Sturdy pages designed for tiny hands",
