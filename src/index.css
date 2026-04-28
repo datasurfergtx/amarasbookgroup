@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-armenian-cream text-armenian-ink font-body antialiased;
+    background-image: radial-gradient(
+      rgba(27, 27, 47, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-armenian-blue ring-offset-2 ring-offset-armenian-cream;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition-all duration-150 active:translate-y-px;
+  }
+
+  .btn-primary {
+    @apply btn bg-armenian-red text-white shadow-pop hover:bg-[#b8000f];
+  }
+
+  .btn-secondary {
+    @apply btn bg-armenian-blue text-white shadow-soft hover:bg-[#002785];
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-armenian-ink text-armenian-ink hover:bg-armenian-ink hover:text-armenian-cream;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full bg-armenian-apricot/20 px-3 py-1 text-sm font-semibold text-armenian-ink;
+  }
+
+  .card {
+    @apply rounded-3xl border border-armenian-ink/10 bg-white shadow-soft;
+  }
+}
