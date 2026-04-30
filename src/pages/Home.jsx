@@ -108,8 +108,12 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1fr,1.2fr]">
-          <BookCard book={featured} />
+        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[auto,1fr]">
+          {/* Cap the cover at the same poster size on every viewport so it
+              reads consistently from phone to full desktop. */}
+          <div className="mx-auto w-full max-w-xs lg:mx-0">
+            <BookCard book={featured} />
+          </div>
           <div>
             <h3 className="font-display text-3xl font-black text-armenian-ink">
               {featured.title}
