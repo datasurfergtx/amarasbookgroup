@@ -45,7 +45,7 @@ export default function Header() {
           <img
             src="/images/amaras_logo_png.png"
             alt="Amaras Book Group logo"
-            className="h-12 w-12 object-contain"
+            className="h-36 w-36 object-contain"
           />
           <span className="flex flex-col leading-tight">
             <span className="font-display text-lg font-black text-armenian-ink">
