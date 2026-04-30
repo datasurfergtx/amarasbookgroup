@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router";
-import LionMascot from "./LionMascot.jsx";
 
 const NAV = [
   { to: "/", label: "Home", end: true },
@@ -43,9 +42,11 @@ export default function Header() {
           className="flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <span className="grid h-12 w-12 place-items-center rounded-full bg-armenian-blue/10">
-            <LionMascot className="h-10 w-10" title="Amaras Book Group lion mascot" />
-          </span>
+          <img
+            src="/images/amaras_logo_png.png"
+            alt="Amaras Book Group logo"
+            className="h-12 w-12 object-contain"
+          />
           <span className="flex flex-col leading-tight">
             <span className="font-display text-lg font-black text-armenian-ink">
               Amaras Book Group
