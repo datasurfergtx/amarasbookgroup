@@ -22,13 +22,10 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  // Close the mobile drawer whenever the route changes — covers programmatic
-  // navigation, browser back/forward, and any link outside the drawer.
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
 
-  // Close the drawer on Escape for keyboard users.
   useEffect(() => {
     if (!open) return;
     function onKey(e) {
@@ -41,6 +38,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-armenian-ink/10 bg-armenian-cream/90 backdrop-blur">
       <div className="container-page flex items-center justify-between py-4">
+
+        {/* Left: lion + text */}
         <Link
           to="/"
           className="flex items-center gap-3"
@@ -59,6 +58,20 @@ export default function Header() {
           </span>
         </Link>
 
+        {/* Center: company logo */}
+        <Link
+          to="/"
+          className="absolute left-1/2 -translate-x-1/2 hidden md:block"
+          onClick={() => setOpen(false)}
+        >
+          <img
+            src="/images/amaras_logo_jpg.jpeg"
+            alt="Amaras Book Group logo"
+            className="h-12 w-auto object-contain"
+          />
+        </Link>
+
+        {/* Right: nav links */}
         <nav className="hidden items-center gap-1 md:flex">
           {NAV.map((item) => (
             <NavLink
@@ -72,6 +85,7 @@ export default function Header() {
           ))}
         </nav>
 
+        {/* Mobile hamburger */}
         <button
           type="button"
           aria-label="Toggle navigation"
@@ -130,7 +144,6 @@ export default function Header() {
         </div>
       )}
 
-      {/* Active path is also reflected in the URL, exposed for tests/debugging */}
       <span className="sr-only" data-current-path={location.pathname} />
     </header>
   );
