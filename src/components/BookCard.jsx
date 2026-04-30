@@ -10,6 +10,8 @@ export default function BookCard({ book }) {
         <img
           src={book.cover}
           alt={`Cover of ${book.title}`}
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>

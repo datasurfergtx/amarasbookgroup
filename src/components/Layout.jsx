@@ -6,8 +6,11 @@ import Footer from "./Footer.jsx";
 export default function Layout({ children }) {
   const { pathname } = useLocation();
 
+  // `behavior: "auto"` is the standard value for an instant jump and, unlike
+  // the non-standard "instant", reliably overrides the global
+  // `html { scroll-behavior: smooth }` rule on every browser.
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [pathname]);
 
   return (

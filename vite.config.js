@@ -1,4 +1,7 @@
-import { defineConfig } from "vite";
+// We import `defineConfig` from `vitest/config` rather than `vite` so the
+// `test` field is type-checked and recognized. At runtime this re-exports
+// Vite's defineConfig, so `vite build` / `vite dev` behave identically.
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({

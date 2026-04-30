@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router";
 import LionMascot from "./LionMascot.jsx";
 
@@ -21,6 +21,22 @@ function navClass({ isActive }) {
 export default function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+
+  // Close the mobile drawer whenever the route changes — covers programmatic
+  // navigation, browser back/forward, and any link outside the drawer.
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  // Close the drawer on Escape for keyboard users.
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-armenian-ink/10 bg-armenian-cream/90 backdrop-blur">

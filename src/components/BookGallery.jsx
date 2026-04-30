@@ -4,6 +4,11 @@ export default function BookGallery({ images, title }) {
   const [active, setActive] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const trackRef = useRef(null);
+  // True when `active` was just set programmatically (e.g. clicking a dot).
+  // While true, we suppress the scroll listener so the smooth-scroll
+  // animation doesn't bounce active back through the intermediate slides.
+  const programmaticScrollRef = useRef(false);
+  const programmaticScrollTimerRef = useRef(null);
 
   const current = images[active];
 
@@ -23,18 +28,42 @@ export default function BookGallery({ images, title }) {
     };
   }, [lightboxOpen, images.length]);
 
-  // Sync mobile swipe carousel with active state.
+  // Sync mobile swipe carousel with active state, but only when active was
+  // changed externally (e.g. by clicking a dot). When the user swipes the
+  // track, `onScroll` already keeps active in sync and re-scrolling here
+  // would cause a feedback loop.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
     const child = track.children[active];
-    if (child) {
-      child.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    if (!child) return;
+    const w = track.clientWidth;
+    const targetLeft = child.offsetLeft - (w - child.clientWidth) / 2;
+    if (Math.abs(track.scrollLeft - targetLeft) < 4) return;
+
+    programmaticScrollRef.current = true;
+    if (programmaticScrollTimerRef.current) {
+      clearTimeout(programmaticScrollTimerRef.current);
     }
+    child.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    // Re-enable the scroll listener once the smooth-scroll animation has
+    // settled. 600ms is comfortably more than the typical browser duration.
+    programmaticScrollTimerRef.current = setTimeout(() => {
+      programmaticScrollRef.current = false;
+    }, 600);
   }, [active]);
+
+  useEffect(() => {
+    return () => {
+      if (programmaticScrollTimerRef.current) {
+        clearTimeout(programmaticScrollTimerRef.current);
+      }
+    };
+  }, []);
 
   // Update active when the user swipes on mobile.
   function onScroll() {
+    if (programmaticScrollRef.current) return;
     const track = trackRef.current;
     if (!track) return;
     const w = track.clientWidth;
@@ -58,6 +87,7 @@ export default function BookGallery({ images, title }) {
         <img
           src={current.src}
           alt={current.alt}
+          decoding="async"
           className="aspect-[4/5] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
         <span className="pointer-events-none absolute right-5 top-5 inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-armenian-ink shadow-soft opacity-0 transition-opacity group-hover:opacity-100">
@@ -100,6 +130,8 @@ export default function BookGallery({ images, title }) {
             <img
               src={img.src}
               alt={img.alt}
+              loading="lazy"
+              decoding="async"
               className="aspect-[4/5] w-full object-cover"
             />
           </button>
@@ -143,6 +175,8 @@ export default function BookGallery({ images, title }) {
             <img
               src={img.src}
               alt={img.alt}
+              loading="lazy"
+              decoding="async"
               className="aspect-square w-full object-cover"
             />
           </button>

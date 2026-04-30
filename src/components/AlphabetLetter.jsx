@@ -49,12 +49,18 @@ export default function AlphabetLetter({
     );
   }
 
+  const showingQuiz = mode === "quiz";
+
   return (
     <article className="card p-0 overflow-hidden">
       <div className="flip-container" style={{ minHeight: 420 }}>
-        <div className={["flip-card h-full", mode === "quiz" ? "is-flipped" : ""].join(" ")}>
-          {/* Front: answers */}
-          <div className="flip-face flex h-full flex-col gap-3 p-5">
+        <div className={["flip-card h-full", showingQuiz ? "is-flipped" : ""].join(" ")}>
+          {/* Front: answers — hidden from AT and tab order while flipped */}
+          <div
+            className="flip-face flex h-full flex-col gap-3 p-5"
+            aria-hidden={showingQuiz || undefined}
+            inert={showingQuiz || undefined}
+          >
             <div className="flex items-baseline justify-between">
               <span className="text-xs font-bold uppercase tracking-widest text-armenian-ink/40">
                 #{index + 1}
@@ -175,6 +181,9 @@ export default function AlphabetLetter({
             type="button"
             onClick={flipToAnswers}
             aria-label={`Show answer for letter ${letter.name}`}
+            aria-hidden={!showingQuiz || undefined}
+            inert={!showingQuiz || undefined}
+            tabIndex={showingQuiz ? 0 : -1}
             className="flip-face flip-back flex h-full w-full flex-col items-center justify-center gap-3 p-5 bg-armenian-blue text-armenian-cream rounded-3xl"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-armenian-cream/60">

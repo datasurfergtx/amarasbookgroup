@@ -26,26 +26,28 @@ function writeStorage(set) {
 export function useMastered() {
   const [set, setSet] = useState(() => new Set(readInitial()));
 
-  const persist = useCallback((next) => {
-    setSet(next);
-    writeStorage(next);
+  // Functional updates so that two toggles fired in the same tick don't
+  // clobber each other via stale closures.
+  const toggle = useCallback((key) => {
+    setSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      writeStorage(next);
+      return next;
+    });
+  }, []);
+
+  const reset = useCallback(() => {
+    setSet((prev) => {
+      if (prev.size === 0) return prev;
+      const next = new Set();
+      writeStorage(next);
+      return next;
+    });
   }, []);
 
   const isMastered = useCallback((key) => set.has(key), [set]);
-
-  const toggle = useCallback(
-    (key) => {
-      const next = new Set(set);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      persist(next);
-    },
-    [set, persist]
-  );
-
-  const reset = useCallback(() => {
-    persist(new Set());
-  }, [persist]);
 
   return {
     isMastered,

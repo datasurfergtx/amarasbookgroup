@@ -4,17 +4,18 @@ import ProgressBar from "../components/ProgressBar.jsx";
 import { alphabet } from "../data/alphabet.js";
 import { useMastered } from "../hooks/useMastered.js";
 
-function moodMessage(count) {
+function moodMessage(count, total) {
   if (count === 0) return "Let's start. Tap any letter to test yourself.";
-  if (count < 10) return "Nice — you've got the first few.";
-  if (count < 20) return "Great progress, keep going.";
-  if (count < 30) return "More than halfway there.";
-  if (count < 39) return "Almost a champion.";
-  return "All 39 mastered. You're a Western Armenian champion!";
+  if (count < Math.min(10, total)) return "Nice — you've got the first few.";
+  if (count < Math.min(20, total)) return "Great progress, keep going.";
+  if (count < Math.min(30, total)) return "More than halfway there.";
+  if (count < total) return "Almost a champion.";
+  return `All ${total} mastered. You're a Western Armenian champion!`;
 }
 
 export default function Pronunciation() {
   const { isMastered, toggle, reset, count } = useMastered();
+  const total = alphabet.length;
 
   function handleReset() {
     if (count === 0) return;
@@ -45,7 +46,7 @@ export default function Pronunciation() {
               <LionMascot className="h-48 w-48" />
             </div>
             <p className="max-w-[18rem] text-center font-display text-lg font-bold text-armenian-ink">
-              {moodMessage(count)}
+              {moodMessage(count, total)}
             </p>
           </div>
         </div>
@@ -54,7 +55,7 @@ export default function Pronunciation() {
       <section className="container-page pb-6">
         <div className="card flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:gap-6">
           <div className="flex-1">
-            <ProgressBar count={count} total={alphabet.length} />
+            <ProgressBar count={count} total={total} />
           </div>
           <button
             type="button"
@@ -88,7 +89,7 @@ export default function Pronunciation() {
 
         {/* Mobile mood message (the lion lives in the hero only on lg+). */}
         <p className="mt-4 text-center font-display text-base font-bold text-armenian-ink lg:hidden">
-          {moodMessage(count)}
+          {moodMessage(count, total)}
         </p>
       </section>
 
