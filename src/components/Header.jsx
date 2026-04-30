@@ -22,13 +22,10 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  // Close the mobile drawer whenever the route changes — covers programmatic
-  // navigation, browser back/forward, and any link outside the drawer.
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
 
-  // Close the drawer on Escape for keyboard users.
   useEffect(() => {
     if (!open) return;
     function onKey(e) {
@@ -126,3 +123,11 @@ export default function Header() {
                 {item.label}
               </NavLink>
             ))}
+          </nav>
+        </div>
+      )}
+
+      <span className="sr-only" data-current-path={location.pathname} />
+    </header>
+  );
+}
