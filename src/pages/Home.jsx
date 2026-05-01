@@ -105,7 +105,7 @@ export default function Home() {
         </div>
 
         {/* Desktop layout - side by side */}
-        <div className="mt-10 hidden items-start gap-10 lg:grid lg:grid-cols-[300px,1fr]">
+        <div className="mt-10 hidden gap-10 lg:grid lg:grid-cols-[300px,1fr] lg:items-start">
           <div className="max-w-xs">
             <BookCard book={featured} />
           </div>
