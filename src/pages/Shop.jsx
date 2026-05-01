@@ -63,7 +63,7 @@ export default function Shop() {
           <div key={book.slug}>
             <BookCard book={book} />
             {!book.amazonUrl && (
-              <div className="mt-3 rounded-2xl bg-armenian-apricot/10 border border-armenian-apricot/30 p-4">
+              <div className="hidden sm:block mt-3 rounded-2xl bg-armenian-apricot/10 border border-armenian-apricot/30 p-4">
                 <p className="text-sm font-bold text-armenian-ink">Join the Wait List</p>
                 <p className="mt-1 text-xs text-armenian-ink/70">Be the first to know when this book is available.</p>
                 <WaitlistForm bookName={book.title} formName={book.slug === "plants-and-garden" ? "waitlist-plants" : "waitlist-home"} />
