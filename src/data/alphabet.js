@@ -1,4 +1,4 @@
-// Western Armenian alphabet, 38 letters in standard order.
+// Western Armenian alphabet, 39 letters in standard order.
 // `audio` is null for now — drop in a path like "/audio/ayb.mp3" later
 // and the Listen button on the Pronunciation page will activate automatically.
 export const alphabet = [
@@ -33,4 +33,12 @@ export const alphabet = [
   { capital: "Ս", lowercase: "ս", name: "Seh",   romanization: "s",   example: { armenian: "սեր",     translit: "ser",      english: "love" },    audio: null },
   { capital: "Վ", lowercase: "վ", name: "Vev",   romanization: "v",   example: { armenian: "վարդ",    translit: "vart",     english: "rose" },    audio: null },
   { capital: "Տ", lowercase: "տ", name: "Dyun",  romanization: "d",   example: { armenian: "տուն",    translit: "dun",      english: "home" },    audio: null },
-  { capital: "Ր", lowercase: "ր", name: "Reh",   romanization: "r",   example: { armenian: "րոպե",    translit:
+  { capital: "Ր", lowercase: "ր", name: "Reh",   romanization: "r",   example: { armenian: "րոպե",    translit: "robe",     english: "minute" },  audio: null },
+  { capital: "Ց", lowercase: "ց", name: "Tso",   romanization: "ts",  example: { armenian: "ցորեն",   translit: "tsoren",   english: "wheat" },   audio: null },
+  { capital: "Ու", lowercase: "ու", name: "Vyun", romanization: "u",  example: { armenian: "ուսուցիչ", translit: "usutsich", english: "teacher" }, audio: null },
+  { capital: "Փ", lowercase: "փ", name: "Pyur",  romanization: "p",   example: { armenian: "փիղ",     translit: "pigh",     english: "elephant" }, audio: null },
+  { capital: "Ք", lowercase: "ք", name: "Keh",   romanization: "k",   example: { armenian: "քար",     translit: "kar",      english: "stone" },   audio: null },
+  { capital: "Եվ", lowercase: "և", name: "Ev",   romanization: "ev",  example: { armenian: "և",       translit: "ev",       english: "and" },     audio: null },
+  { capital: "Օ", lowercase: "օ", name: "O",     romanization: "o",   example: { armenian: "օր",      translit: "or",       english: "day" },     audio: null },
+  { capital: "Ֆ", lowercase: "ֆ", name: "Feh",   romanization: "f",   example: { armenian: "ֆիլմ",    translit: "film",     english: "film" },    audio: null },
+];
