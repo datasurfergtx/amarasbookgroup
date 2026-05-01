@@ -90,7 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-  {/* Featured book */}
+ {/* Featured book */}
       <section className="container-page section">
         <div className="flex items-end justify-between gap-4">
           <div>
@@ -102,43 +102,44 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[auto,1fr]">
+        <div className="mt-10 grid items-start gap-10 lg:grid-cols-[auto,1fr]">
           <div className="mx-auto w-full max-w-xs lg:mx-0">
             <BookCard book={featured} />
           </div>
-          <div>
-            <h3 className="font-display text-3xl font-black text-armenian-ink">
-              {featured.title}
-            </h3>
-            <p className="mt-3 text-lg text-armenian-ink/80">
-              {featured.description}
-            </p>
-            <ul className="mt-5 space-y-2 text-armenian-ink/80">
-              {featured.highlights.map((h) => (
-                <li key={h} className="flex items-start gap-3">
-                  <span className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-armenian-red" />
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link to={`/shop/${featured.slug}`} className="btn-primary">
-                See the book
+          <div className="flex flex-col gap-6">
+            <div>
+              <h3 className="font-display text-3xl font-black text-armenian-ink">
+                {featured.title}
+              </h3>
+              <p className="mt-3 text-lg text-armenian-ink/80">
+                {featured.description}
+              </p>
+              <ul className="mt-5 space-y-2 text-armenian-ink/80">
+                {featured.highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-3">
+                    <span className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-armenian-red" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link to={`/shop/${featured.slug}`} className="btn-primary">
+                  See the book
+                </Link>
+                <a href={featured.amazonUrl} target="_blank" rel="noopener noreferrer" className="btn-outline">
+                  Buy on Amazon
+                </a>
+              </div>
+            </div>
+            <div className="mt-4">
+              <Link to="/shop" className="btn-primary text-lg px-10 py-4 w-full text-center block">
+                See All Books &rarr;
               </Link>
-              <a href={featured.amazonUrl} target="_blank" rel="noopener noreferrer" className="btn-outline">
-                Buy on Amazon
-              </a>
             </div>
           </div>
         </div>
-
-        <div className="mt-12 flex justify-center">
-          <Link to="/shop" className="btn-primary text-lg px-10 py-4">
-            See All Books &rarr;
-          </Link>
-        </div>
       </section>
-
+      
       {/* Pronunciation teaser */}
       <section className="bg-armenian-apricot/15">
         <div className="container-page section">
