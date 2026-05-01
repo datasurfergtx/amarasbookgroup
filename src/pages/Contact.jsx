@@ -36,7 +36,28 @@ export default function Contact() {
           )}
         </div>
         <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          {/* Mobile: stacked, Desktop: 2x2 grid */}
+          <div className="card p-5 sm:hidden">
+            <h2 className="font-display text-lg font-bold">Email us directly</h2>
+            <p className="mt-2 text-sm text-armenian-ink/70">Reach us at:</p>
+            <a href="mailto:amarasbookgroup@gmail.com" className="mt-2 inline-block text-sm font-bold text-armenian-blue hover:underline break-all">amarasbookgroup@gmail.com</a>
+            <p className="mt-3 text-sm text-armenian-ink/70">Follow us on Instagram:</p>
+            <a href="https://www.instagram.com/amarasbookgroup" target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-2 text-sm font-bold text-armenian-blue hover:underline"><InstagramIcon />@amarasbookgroup</a>
+          </div>
+          <div className="card p-5 sm:hidden">
+            <h2 className="font-display text-lg font-bold">A team of one</h2>
+            <p className="mt-2 text-sm text-armenian-ink/70">Amaras Book Group is a one-person passion project working to support the revival of the Western Armenian language. Every message is read personally — thank you for taking the time to reach out.</p>
+          </div>
+          <div className="card p-5 sm:hidden">
+            <h2 className="font-display text-lg font-bold">Wait lists & sales</h2>
+            <p className="mt-2 text-sm text-armenian-ink/70">Interested in upcoming titles, bulk orders for schools, or being added to a book wait list? Mention it in your message and we'll be in touch.</p>
+          </div>
+          <div className="card p-5 sm:hidden">
+            <h2 className="font-display text-lg font-bold">Response time</h2>
+            <p className="mt-2 text-sm text-armenian-ink/70">Since it's just one person behind the scenes, replies usually arrive within a few days. Thank you for your patience.</p>
+          </div>
+          {/* Desktop: 2x2 grid */}
+          <div className="hidden sm:grid grid-cols-2 gap-4">
             <div className="card p-5">
               <h2 className="font-display text-lg font-bold">Email us directly</h2>
               <p className="mt-2 text-sm text-armenian-ink/70">Reach us at:</p>
@@ -49,7 +70,7 @@ export default function Contact() {
               <p className="mt-2 text-sm text-armenian-ink/70">Amaras Book Group is a one-person passion project working to support the revival of the Western Armenian language. Every message is read personally.</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="hidden sm:grid grid-cols-2 gap-4">
             <div className="card p-5">
               <h2 className="font-display text-lg font-bold">Wait lists & sales</h2>
               <p className="mt-2 text-sm text-armenian-ink/70">Interested in upcoming titles, bulk orders for schools, or being added to a wait list? Mention it in your message.</p>
