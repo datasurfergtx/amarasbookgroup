@@ -16,10 +16,21 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="container-page section grid items-center gap-10 lg:grid-cols-2">
           <div>
+            {/* Mission tagline */}
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="h-px flex-1 bg-armenian-red" />
+                <span className="text-armenian-red text-xs font-bold uppercase tracking-widest">Our Mission</span>
+                <div className="h-px flex-1 bg-armenian-red" />
+              </div>
+              <p className="font-display text-2xl font-black text-armenian-red leading-tight sm:text-3xl">
+                Teach Your Child Armenian.
+                <br />No Fluency Required.
+              </p>
+              <div className="mt-2 h-px bg-armenian-red" />
+            </div>
+
             <span className="pill">Armenian children's books</span>
-            <p className="mt-3 text-lg font-semibold text-armenian-red">
-              Teach your child Armenian — no fluency required
-            </p>
             <h1 className="mt-4 font-display text-5xl font-black leading-[1.05] text-armenian-ink sm:text-6xl">
               Armenian stories for{" "}
               <span className="text-armenian-red">little hearts.</span>
@@ -57,6 +68,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Mascot intro band */}
       <section className="bg-armenian-blue text-armenian-cream">
         <div className="container-page section grid gap-10 lg:grid-cols-3">
@@ -90,22 +102,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Featured book */}
       <section className="container-page section">
         <div className="flex items-end justify-between gap-4">
           <div>
             <span className="pill">Featured</span>
             <h2 className="mt-3 font-display text-4xl font-black text-armenian-ink sm:text-5xl">
-              Our flagship book.
+              Our flagship Book Set.
             </h2>
           </div>
-          <Link
-            to="/shop"
-            className="hidden text-sm font-bold text-armenian-blue hover:underline sm:inline"
-          >
-            See all books &rarr;
-          </Link>
         </div>
+
         <div className="mt-10 grid items-center gap-10 lg:grid-cols-[auto,1fr]">
           <div className="mx-auto w-full max-w-xs lg:mx-0">
             <BookCard book={featured} />
@@ -135,7 +143,24 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* See all books — lion button */}
+        <div className="mt-16 flex flex-col items-center gap-4">
+          <p className="font-display text-xl font-bold text-armenian-ink">
+            Explore the full book set
+          </p>
+          <Link
+            to="/shop"
+            className="group flex flex-col items-center gap-3 rounded-3xl border-2 border-armenian-red/20 bg-armenian-cream px-10 py-6 shadow-soft transition-all hover:border-armenian-red hover:shadow-pop"
+          >
+            <LionMascot className="h-20 w-20 transition-transform group-hover:scale-110" />
+            <span className="font-display text-lg font-black text-armenian-red">
+              See All Books &rarr;
+            </span>
+          </Link>
+        </div>
       </section>
+
       {/* Pronunciation teaser */}
       <section className="bg-armenian-apricot/15">
         <div className="container-page section">
@@ -183,6 +208,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Contact CTA */}
       <section className="container-page section">
         <div className="overflow-hidden rounded-3xl bg-armenian-red text-armenian-cream">
