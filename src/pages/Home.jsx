@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import LionMascot from "../components/LionMascot.jsx";
 import BookCard from "../components/BookCard.jsx";
@@ -7,7 +8,7 @@ import { alphabet } from "../data/alphabet.js";
 const TEASER_INDICES = [0, 14, 19];
 
 function SubscribeBar() {
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
