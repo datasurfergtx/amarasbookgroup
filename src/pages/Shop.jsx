@@ -10,8 +10,7 @@ export default function Shop() {
           Books for little Armenian readers.
         </h1>
         <p className="mt-4 text-lg text-armenian-ink/80">
-          Each book is designed to be a warm, hands-on first step into Armenian.
-          More titles are on the way — for now, meet our flagship.
+          Each book is designed to be a warm, hands-on first step into Armenian using Armenian, transliterated Armenian, and English.
         </p>
       </header>
 

@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import Shop from "./pages/Shop.jsx";
 import BookDetail from "./pages/BookDetail.jsx";
 import Pronunciation from "./pages/Pronunciation.jsx";
+import LearnAlphabet from "./pages/LearnAlphabet.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:slug" element={<BookDetail />} />
         <Route path="/pronunciation" element={<Pronunciation />} />
+        <Route path="/learn-alphabet" element={<LearnAlphabet />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -4,7 +4,7 @@ import BookCard from "../components/BookCard.jsx";
 import { books } from "../data/books.js";
 import { alphabet } from "../data/alphabet.js";
 
-const TEASER_INDICES = [0, 14, 19]; // Ա, Կ, Մ — ayb, gen, men
+const TEASER_INDICES = [0, 14, 19]; // Ա, Կ, Մ — ayp, gen, men
 
 export default function Home() {
   const featured = books[0];
@@ -17,28 +17,30 @@ export default function Home() {
         <div className="container-page section grid items-center gap-10 lg:grid-cols-2">
           <div>
             <span className="pill">Armenian children's books</span>
+            <p className="mt-3 text-lg font-semibold text-armenian-red">
+              Teach your child Armenian — no fluency required
+            </p>
             <h1 className="mt-4 font-display text-5xl font-black leading-[1.05] text-armenian-ink sm:text-6xl">
               Armenian stories for{" "}
               <span className="text-armenian-red">little hearts.</span>
             </h1>
             <p className="mt-5 max-w-lg text-lg text-armenian-ink/80">
-              At Amaras Book Group we publish bright, joyful books that help
-              kids fall in love with the Armenian language one letter, one word,
-              and one story at a time.
+              At Amaras Book Group, we publish bright, joyful books that help
+              kids fall in love with the Armenian language, one word at a time.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/shop" className="btn-primary">
-                Shop the book
+                Shop the Books
               </Link>
               <Link to="/pronunciation" className="btn-outline">
-                Learn the alphabet
+                Help with Pronunciation
               </Link>
             </div>
             <div className="mt-8 flex items-center gap-3 text-sm text-armenian-ink/70">
               <span className="inline-flex h-2 w-2 rounded-full bg-armenian-red" />
               <span className="inline-flex h-2 w-2 rounded-full bg-armenian-blue" />
               <span className="inline-flex h-2 w-2 rounded-full bg-armenian-apricot" />
-              <span>Inspired by the colors of the Armenian flag.</span>
+              <span>Inspired by the colors of the Armenian flag</span>
             </div>
           </div>
 
@@ -97,7 +99,7 @@ export default function Home() {
           <div>
             <span className="pill">Featured</span>
             <h2 className="mt-3 font-display text-4xl font-black text-armenian-ink sm:text-5xl">
-              The book that started it all.
+              Our flagship book.
             </h2>
           </div>
           <Link
@@ -109,8 +111,6 @@ export default function Home() {
         </div>
 
         <div className="mt-10 grid items-center gap-10 lg:grid-cols-[auto,1fr]">
-          {/* Cap the cover at the same poster size on every viewport so it
-              reads consistently from phone to full desktop. */}
           <div className="mx-auto w-full max-w-xs lg:mx-0">
             <BookCard book={featured} />
           </div>
@@ -133,7 +133,7 @@ export default function Home() {
               <Link to={`/shop/${featured.slug}`} className="btn-primary">
                 See the book
               </Link>
-              <a
+              
                 href={featured.amazonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -151,13 +151,13 @@ export default function Home() {
         <div className="container-page section">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <span className="pill">Pronunciation Help</span>
+              <span className="pill">Learn the Alphabet</span>
               <h2 className="mt-3 font-display text-4xl font-black text-armenian-ink sm:text-5xl">
                 Learn three letters in three seconds.
               </h2>
             </div>
             <Link
-              to="/pronunciation"
+              to="/learn-alphabet"
               className="hidden text-sm font-bold text-armenian-blue hover:underline sm:inline"
             >
               Explore the alphabet &rarr;
@@ -187,8 +187,8 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-8 sm:hidden">
-            <Link to="/pronunciation" className="btn-secondary">
-              Explore the alphabet
+            <Link to="/learn-alphabet" className="btn-secondary">
+              Learn the Alphabet
             </Link>
           </div>
         </div>

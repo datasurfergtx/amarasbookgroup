@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router";
+import LionMascot from "./LionMascot.jsx";
 
 const NAV = [
   { to: "/", label: "Home", end: true },
   { to: "/shop", label: "Shop" },
+  { to: "/learn-alphabet", label: "Learn the Alphabet!" },
   { to: "/pronunciation", label: "Pronunciation Help" },
   { to: "/contact", label: "Contact" },
 ];
@@ -41,10 +43,11 @@ export default function Header() {
           to="/"
           className="flex items-center gap-3"
           onClick={() => setOpen(false)}
-       <img
+        >
+          <img
             src="/images/amaras_logo_cropped_png (1).png"
             alt="Amaras Book Group logo"
-            className="h-10 w-10 object-contain md:h-36 md:w-36"
+            className="h-8 w-8 object-contain md:h-36 md:w-36"
           />
           <span className="flex flex-col leading-tight">
             <span className="font-display text-lg font-black text-armenian-ink">

@@ -1,116 +1,54 @@
-import LionMascot from "../components/LionMascot.jsx";
-import AlphabetLetter from "../components/AlphabetLetter.jsx";
-import ProgressBar from "../components/ProgressBar.jsx";
-import { alphabet } from "../data/alphabet.js";
-import { useMastered } from "../hooks/useMastered.js";
-
-function moodMessage(count, total) {
-  if (count === 0) return "Let's start. Tap any letter to test yourself.";
-  if (count < Math.min(10, total)) return "Nice — you've got the first few.";
-  if (count < Math.min(20, total)) return "Great progress, keep going.";
-  if (count < Math.min(30, total)) return "More than halfway there.";
-  if (count < total) return "Almost a champion.";
-  return `All ${total} mastered. You're a Western Armenian champion!`;
-}
+import { useState } from "react";
 
 export default function Pronunciation() {
-  const { isMastered, toggle, reset, count } = useMastered();
-  const total = alphabet.length;
-
-  function handleReset() {
-    if (count === 0) return;
-    reset();
-  }
+  const [submitted, setSubmitted] = useState(false);
 
   return (
-    <>
-      <section className="container-page section pb-10">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.4fr,1fr]">
-          <div>
-            <span className="pill">Pronunciation Help</span>
-            <h1 className="mt-3 font-display text-5xl font-black leading-tight text-armenian-ink">
-              The Armenian alphabet,{" "}
-              <span className="text-armenian-red">letter by letter.</span>
-            </h1>
-            <p className="mt-4 max-w-xl text-lg text-armenian-ink/80">
-              The Western Armenian alphabet has{" "}
-              <strong>39 letters</strong>. Tap any letter below to flip into
-              quiz mode, hit{" "}
-              <strong>Trace it</strong> to practice writing, and tap the star to
-              mark a letter as learned. Your progress saves automatically on
-              this device.
-            </p>
-          </div>
-          <div className="hidden flex-col items-center gap-4 lg:flex">
-            <div className="rounded-[2rem] border border-armenian-ink/10 bg-white p-6 shadow-soft">
-              <LionMascot className="h-48 w-48" />
-            </div>
-            <p className="max-w-[18rem] text-center font-display text-lg font-bold text-armenian-ink">
-              {moodMessage(count, total)}
-            </p>
-          </div>
-        </div>
-      </section>
+    <section className="container-page section">
+      <div className="mx-auto max-w-2xl text-center">
+        <span className="pill">Pronunciation Help</span>
+        <h1 className="mt-3 font-display text-5xl font-black text-armenian-ink">
+          Coming soon.
+        </h1>
+        <p className="mt-5 text-lg text-armenian-ink/80">
+          This page is under construction. We're working on something special —
+          audio pronunciations for every word in every book, so anyone can hear
+          exactly how each Armenian word sounds, regardless of their fluency level.
+        </p>
+        <p className="mt-3 text-armenian-ink/70">
+          Sign up below and we'll notify you the moment it's ready.
+        </p>
 
-      <section className="container-page pb-6">
-        <div className="card flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:gap-6">
-          <div className="flex-1">
-            <ProgressBar count={count} total={total} />
+        {submitted ? (
+          <div className="mt-8 rounded-2xl border border-armenian-blue/30 bg-armenian-blue/10 p-6 text-armenian-blue">
+            You're on the list! We'll be in touch when the page goes live.
           </div>
-          <button
-            type="button"
-            onClick={handleReset}
-            disabled={count === 0}
-            aria-label="Reset learned letters"
-            className={[
-              "inline-flex items-center justify-center gap-2 self-start rounded-full px-4 py-2 text-sm font-semibold transition-colors sm:self-auto",
-              count === 0
-                ? "cursor-not-allowed bg-armenian-ink/5 text-armenian-ink/40"
-                : "bg-armenian-ink/10 text-armenian-ink hover:bg-armenian-ink/20",
-            ].join(" ")}
+        ) : (
+          <form
+            name="pronunciation-notify"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            action="/pronunciation?success=true"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-4 w-4"
-              aria-hidden="true"
-            >
-              <polyline points="1 4 1 10 7 10" />
-              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
-            </svg>
-            Reset progress
-          </button>
-        </div>
-
-        {/* Mobile mood message (the lion lives in the hero only on lg+). */}
-        <p className="mt-4 text-center font-display text-base font-bold text-armenian-ink lg:hidden">
-          {moodMessage(count, total)}
-        </p>
-      </section>
-
-      <section className="container-page pb-20 pt-6">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {alphabet.map((letter, i) => (
-            <AlphabetLetter
-              key={`${letter.capital}-${letter.name}`}
-              letter={letter}
-              index={i}
-              isMastered={isMastered(letter.capital)}
-              onToggleMastered={() => toggle(letter.capital)}
+            <input type="hidden" name="form-name" value="pronunciation-notify" />
+            <p className="hidden">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Your email address"
+              className="w-full rounded-xl border border-armenian-ink/15 bg-white px-4 py-3 outline-none focus:border-armenian-blue sm:w-80"
             />
-          ))}
-        </div>
-
-        <p className="mt-10 text-center text-sm text-armenian-ink/60">
-          Romanizations follow common Western Armenian conventions, the
-          dialect spoken across the diaspora.
-        </p>
-      </section>
-    </>
+            <button type="submit" className="btn-primary whitespace-nowrap">
+              Notify me
+            </button>
+          </form>
+        )}
+      </div>
+    </section>
   );
 }

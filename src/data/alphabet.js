@@ -1,11 +1,11 @@
-// Western Armenian alphabet, 39 letters in standard order.
+// Western Armenian alphabet, 38 letters in standard order.
 // `audio` is null for now — drop in a path like "/audio/ayb.mp3" later
 // and the Listen button on the Pronunciation page will activate automatically.
 export const alphabet = [
-  { capital: "Ա", lowercase: "ա", name: "Ayb",   romanization: "a",   example: { armenian: "արև",     translit: "arev",     english: "sun" },     audio: null },
+  { capital: "Ա", lowercase: "ա", name: "Ayp",   romanization: "a",   example: { armenian: "արև",     translit: "arev",     english: "sun" },     audio: null },
   { capital: "Բ", lowercase: "բ", name: "Pen",   romanization: "p",   example: { armenian: "բարև",    translit: "parev",    english: "hello" },   audio: null },
   { capital: "Գ", lowercase: "գ", name: "Kim",   romanization: "k",   example: { armenian: "գարուն",  translit: "karun",    english: "spring" },  audio: null },
-  { capital: "Դ", lowercase: "դ", name: "Ta",    romanization: "t",   example: { armenian: "դուռ",    translit: "tur̥",      english: "door" },    audio: null },
+  { capital: "Դ", lowercase: "դ", name: "Tah",   romanization: "t",   example: { armenian: "դուռ",    translit: "tur̥",      english: "door" },    audio: null },
   { capital: "Ե", lowercase: "ե", name: "Yech",  romanization: "e / ye", example: { armenian: "երազ",  translit: "yeraz",   english: "dream" },   audio: null },
   { capital: "Զ", lowercase: "զ", name: "Za",    romanization: "z",   example: { armenian: "զանգ",    translit: "zang",     english: "bell" },    audio: null },
   { capital: "Է", lowercase: "է", name: "Eh",    romanization: "e",   example: { armenian: "էջ",      translit: "ej",       english: "page" },    audio: null },
@@ -20,7 +20,7 @@ export const alphabet = [
   { capital: "Հ", lowercase: "հ", name: "Ho",    romanization: "h",   example: { armenian: "հայր",    translit: "hayr",     english: "father" },  audio: null },
   { capital: "Ձ", lowercase: "ձ", name: "Tsa",   romanization: "ts",  example: { armenian: "ձուկ",    translit: "tsuk",     english: "fish" },    audio: null },
   { capital: "Ղ", lowercase: "ղ", name: "Ghat",  romanization: "gh",  example: { armenian: "ղեկ",     translit: "ghek",     english: "wheel" },   audio: null },
-  { capital: "Ճ", lowercase: "ճ", name: "Jeh",   romanization: "j",   example: { armenian: "ճանապարհ", translit: "janabarh", english: "road" }, audio: null },
+  { capital: "Ճ", lowercase: "ճ", name: "Che",   romanization: "j",   example: { armenian: "ճանապարհ", translit: "janabarh", english: "road" }, audio: null },
   { capital: "Մ", lowercase: "մ", name: "Men",   romanization: "m",   example: { armenian: "մայր",    translit: "mayr",     english: "mother" },  audio: null },
   { capital: "Յ", lowercase: "յ", name: "Hi",    romanization: "y",   example: { armenian: "այբ",     translit: "ayp",      english: "alpha" },   audio: null },
   { capital: "Ն", lowercase: "ն", name: "Nu",    romanization: "n",   example: { armenian: "նուռ",    translit: "nur̥",      english: "pomegranate" }, audio: null },
@@ -33,12 +33,4 @@ export const alphabet = [
   { capital: "Ս", lowercase: "ս", name: "Seh",   romanization: "s",   example: { armenian: "սեր",     translit: "ser",      english: "love" },    audio: null },
   { capital: "Վ", lowercase: "վ", name: "Vev",   romanization: "v",   example: { armenian: "վարդ",    translit: "vart",     english: "rose" },    audio: null },
   { capital: "Տ", lowercase: "տ", name: "Dyun",  romanization: "d",   example: { armenian: "տուն",    translit: "dun",      english: "home" },    audio: null },
-  { capital: "Ր", lowercase: "ր", name: "Reh",   romanization: "r",   example: { armenian: "րոպե",    translit: "robe",     english: "minute" }, audio: null },
-  { capital: "Ց", lowercase: "ց", name: "Tso",   romanization: "ts",  example: { armenian: "ցորեն",   translit: "tsoren",   english: "wheat" },   audio: null },
-  { capital: "Ու", lowercase: "ու", name: "Vyun", romanization: "u",  example: { armenian: "ուսուցիչ", translit: "usutsich", english: "teacher" }, audio: null },
-  { capital: "Փ", lowercase: "փ", name: "Pyur",  romanization: "p",   example: { armenian: "փիղ",     translit: "pigh",     english: "elephant" }, audio: null },
-  { capital: "Ք", lowercase: "ք", name: "Keh",   romanization: "k",   example: { armenian: "քար",     translit: "kar",      english: "stone" },   audio: null },
-  { capital: "Եվ", lowercase: "և", name: "Ev",   romanization: "ev",  example: { armenian: "և",       translit: "ev",       english: "and" },     audio: null },
-  { capital: "Օ", lowercase: "օ", name: "O",     romanization: "o",   example: { armenian: "օր",      translit: "or",       english: "day" },     audio: null },
-  { capital: "Ֆ", lowercase: "ֆ", name: "Feh",   romanization: "f",   example: { armenian: "ֆիլմ",    translit: "film",     english: "film" },    audio: null },
-];
+  { capital: "Ր", lowercase: "ր", name: "Reh",   romanization: "r",   example: { armenian: "րոպե",    translit:
