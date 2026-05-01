@@ -1,52 +1,57 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#F2A800" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bright Armenian children's books supporting Western Armenian language revival." />
-    <title>Amaras Book Group | Armenian Children's Books</title>
-    <!-- OG_META_START -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Amaras Book Group" />
-    <meta property="og:title" content="Amaras Book Group | Armenian Children's Books" />
-    <meta property="og:description" content="Bright Armenian children's books supporting Western Armenian language revival." />
-    <meta property="og:image" content="https://amarasbookgroup.netlify.app/og/og-default.jpg" />
-    <meta property="og:url" content="https://amarasbookgroup.netlify.app/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Amaras Book Group | Armenian Children's Books" />
-    <meta name="twitter:description" content="Bright Armenian children's books supporting Western Armenian language revival." />
-    <meta name="twitter:image" content="https://amarasbookgroup.netlify.app/og/og-default.jpg" />
-    <!-- OG_META_END -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Hidden forms for Netlify Forms detection -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <textarea name="message"></textarea>
-    </form>
-    <form name="subscribe" netlify hidden>
-      <input type="email" name="email" />
-    </form>
-    <form name="waitlist-plants" netlify hidden>
-      <input type="email" name="email" />
-      <input type="text" name="book" />
-    </form>
-    <form name="waitlist-home" netlify hidden>
-      <input type="email" name="email" />
-      <input type="text" name="book" />
-    </form>
-    <form name="pronunciation-notify" netlify hidden>
-      <input type="email" name="email" />
-    </form>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-armenian-cream text-armenian-ink;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-20;
+  }
+
+  .card {
+    @apply rounded-3xl bg-white shadow-soft ring-1 ring-armenian-ink/5;
+  }
+
+  .pill {
+    @apply inline-block rounded-full bg-armenian-blue/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-armenian-blue;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-bold transition-all;
+  }
+
+  .btn-primary {
+    @apply btn bg-armenian-red text-white hover:bg-armenian-red/90 shadow-soft;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-armenian-ink/20 text-armenian-ink hover:border-armenian-ink/40;
+  }
+
+  .btn-secondary {
+    @apply btn bg-armenian-blue text-white hover:bg-armenian-blue/90;
+  }
+}
+
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 2px 15px -3px rgb(0 0 0 / 0.07), 0 10px 20px -2px rgb(0 0 0 / 0.04);
+  }
+
+  .shadow-pop {
+    box-shadow: 0 4px 25px -5px rgb(0 0 0 / 0.1), 0 10px 30px -5px rgb(0 0 0 / 0.08);
+  }
+}
