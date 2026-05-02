@@ -81,7 +81,7 @@ export default function Shop() {
         {/* Single waitlist for books 2 & 3 */}
         <div className="rounded-2xl bg-armenian-apricot/10 border border-armenian-apricot/30 p-4">
           <p className="font-display text-lg font-bold text-armenian-ink">Join the Wait List</p>
-          <p className="mt-1 text-sm text-armenian-ink/70">Be the first to know when Plants & Garden and In the Home are available.</p>
+          <p className="mt-1 text-sm text-armenian-ink/70">Be the first to know when more books are available.</p>
           <WaitlistForm />
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function Shop() {
           <div key={book.slug}>
             <BookCard book={book} />
             {!book.amazonUrl && (
-              <p className="mt-2 text-center text-xs font-black uppercase tracking-wide text-armenian-red">Sold Out. Join Waitlist Below</p>
+              <p className="mt-2 text-center text-xs font-black uppercase tracking-wide text-armenian-red">Join Waitlist Below</p>
             )}
           </div>
         ))}
