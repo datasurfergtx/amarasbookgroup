@@ -6,10 +6,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#F2A800" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Bright Armenian children's books supporting Western Armenian language revival."
-    />
+    <meta name="description" content="Bright Armenian children's books supporting Western Armenian language revival." />
     <title>Amaras Book Group | Armenian Children's Books</title>
     <!-- OG_META_START -->
     <meta property="og:type" content="website" />
@@ -25,17 +22,23 @@
     <!-- OG_META_END -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <!-- Hidden form so Netlify Forms detects the contact form at build time -->
+    <!-- Hidden forms for Netlify Forms detection -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="email" name="email" />
       <textarea name="message"></textarea>
+    </form>
+    <form name="subscribe" netlify hidden>
+      <input type="email" name="email" />
+    </form>
+    <form name="waitlist" netlify hidden>
+      <input type="email" name="email" />
+    </form>
+    <form name="pronunciation-notify" netlify hidden>
+      <input type="email" name="email" />
     </form>
 
     <div id="root"></div>
