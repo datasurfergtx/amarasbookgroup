@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import LionMascot from "./LionMascot.jsx";
-import { useState } from "react";
 
 function InstagramIcon() {
   return (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>);
@@ -8,22 +8,25 @@ function InstagramIcon() {
 
 function SubscribeForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const form = e.target;
-    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(form)).toString() }).then(() => setSubmitted(true)).catch(() => setSubmitted(true));
+    try {
+      await fetch("/api/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
+      setSubmitted(true);
+    } catch {
+      setSubmitted(true);
+    }
   }
 
   if (submitted) return (<p className="text-sm text-armenian-apricot font-semibold">You're on the list! Thank you. 🎉</p>);
 
   return (
-    <form onSubmit={handleSubmit} name="subscribe" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" className="mt-4 flex flex-col gap-2 sm:flex-row">
-      <input type="hidden" name="form-name" value="subscribe" />
-      <input name="bot-field" className="hidden" />
-      <input type="email" name="email" required placeholder="Your email address" className="w-full rounded-xl border border-armenian-cream/20 bg-armenian-cream/10 px-4 py-2 text-sm text-armenian-cream placeholder:text-armenian-cream/50 outline-none focus:border-armenian-apricot" />
-      <button type="submit" className="whitespace-nowrap rounded-xl bg-armenian-apricot px-4 py-2 text-sm font-bold text-armenian-ink hover:bg-[#ffb724]">Subscribe</button>
-    </form>
+    <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+      <input type="email" required placeholder="Your email address" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full rounded-xl border border-armenian-cream/20 bg-armenian-cream/10 px-4 py-2 text-sm text-armenian-cream placeholder:text-armenian-cream/50 outline-none focus:border-armenian-apricot" />
+      <button onClick={handleSubmit} className="whitespace-nowrap rounded-xl bg-armenian-apricot px-4 py-2 text-sm font-bold text-armenian-ink hover:bg-[#ffb724]">Subscribe</button>
+    </div>
   );
 }
 
