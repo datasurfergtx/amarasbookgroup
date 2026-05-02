@@ -80,7 +80,7 @@ export default function Shop() {
                 </div>
                 <div className="mt-2">
                   <span className="font-bold text-armenian-red">{book.price}</span>
-                  {!book.amazonUrl && <p className="mt-1 text-xs font-black uppercase tracking-wide text-armenian-red">Sold Out. Join Waitlist Below</p>}
+                  {!book.amazonUrl && <p className="mt-1 text-xs font-black uppercase tracking-wide text-armenian-red">In Production. Join Waitlist Below</p>}
                 </div>
               </div>
             </Link>
@@ -88,7 +88,7 @@ export default function Shop() {
         ))}
         <div className="rounded-2xl bg-armenian-apricot/10 border border-armenian-apricot/30 p-4">
           <p className="font-display text-lg font-bold text-armenian-ink">Join the Wait List</p>
-          <p className="mt-1 text-sm text-armenian-ink/70">Be the first to know when Plants & Garden and In the Home are available.</p>
+          <p className="mt-1 text-sm text-armenian-ink/70">Be the first to know when 'Plants & Garden' and 'In The Home' are ready for purchase!</p>
           <WaitlistForm />
         </div>
       </div>
@@ -99,7 +99,7 @@ export default function Shop() {
           <div key={book.slug}>
             <BookCard book={book} />
             {!book.amazonUrl && (
-              <p className="mt-2 text-center text-xs font-black uppercase tracking-wide text-armenian-red">Sold Out. Join Waitlist Below</p>
+              <p className="mt-2 text-center text-xs font-black uppercase tracking-wide text-armenian-red">In Production. Join Waitlist Below</p>
             )}
           </div>
         ))}
@@ -107,7 +107,7 @@ export default function Shop() {
 
       <div className="hidden sm:block mt-6 rounded-2xl bg-armenian-apricot/10 border border-armenian-apricot/30 p-6">
         <p className="font-display text-xl font-bold text-armenian-ink">Join the Wait List</p>
-        <p className="mt-1 text-sm text-armenian-ink/70">Be the first to know when Plants & Garden and In the Home are available.</p>
+        <p className="mt-1 text-sm text-armenian-ink/70">Be the first to know when 'Plants & Garden' and 'In The Home' are ready for purchase!</p>
         <WaitlistForm />
       </div>
 
