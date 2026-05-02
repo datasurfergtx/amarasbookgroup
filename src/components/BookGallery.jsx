@@ -111,7 +111,7 @@ export default function BookGallery({ images, title }) {
 function Lightbox({ images, activeIndex, title, onClose, onPrev, onNext, onSelect }) {
   const current = images[activeIndex];
   return (
-    <div role="dialog" aria-modal="true" aria-label={`Image viewer for ${title}`} className="fixed inset-0 z-[100] flex flex-col bg-armenian-ink/95 backdrop-blur" onClick={onClose}>
+    <div role="dialog" aria-modal="true" aria-label={`Image viewer for ${title}`} className="fixed inset-0 flex flex-col bg-armenian-ink/95 backdrop-blur" style={{zIndex: 9999}} onClick={onClose}>
       <div className="flex items-center justify-between p-4 text-armenian-cream">
         <p className="text-sm font-semibold">
           {activeIndex + 1} / {images.length}{" "}
